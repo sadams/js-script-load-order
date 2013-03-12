@@ -1,0 +1,10 @@
+{
+  "name": "js-script-load-order",
+  "version": "0.0.1",
+  "description": "A simple test for load order in JS",
+  "author": "Sam Adams <adams.sam@gmail.com>",
+  "devDependencies" : {
+    "connect"                : "*",
+    "mustache"               : "*"
+  }
+}

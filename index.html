@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <script>
+          function getParameterByName(name){
+            name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
+            var regexS = "[\\?&]" + name + "=([^&#]*)";
+            var regex = new RegExp(regexS);
+            var results = regex.exec(window.location.search);
+            if(results == null)
+              return "";
+            else
+              return decodeURIComponent(results[1].replace(/\+/g, " "));
+          }
+          function scriptLoaded(number){
+            document.write('<p class="script-loaded">' + number + '</p>');
+          }
+          function loadScript(number, nexts) {
+            var cb = Math.floor(Math.random()*11);
+            var nexts = nexts ? '&nexts=' + nexts.join(',') : '';
+            document.write('<scr'+'ipt src="/js/include.js?number=' + number + nexts + '&cb='+cb+'"></sc'+'ript>');
+          }
+        </script>
+      <script>
+        loadScript(1,[2]);
+        loadScript(3,[4]);
+        loadScript(5,[6, 7]);
+        loadScript(8);
+      </script>
+      <script>
+        loadScript(10,[11]);
+      </script>
+      <script>
+        loadScript(12,[13]);
+      </script>
+      <script>
+        loadScript(14,[15, 16]);
+      </script>
+      <script>
+        loadScript(17);
+      </script>
+      <title>Script Load Order Testing</title>
+    </head>
+    <body>
+    HI THERE!
+        <script>
+        /*
+        This page does nothing.
+        Tt is just here to be visited, fatso will report the final url which it will match against the expected
+        */
+        </script>
+
+    </body>
+</html>
