@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+        var x;
+        function syncLoad(script) {
+            document.write('<scr'+'ipt src="'+script+'"></sc'+'ript>');
+        }
+        function asyncLoad(script) {
+            var d = document;
+            var loaderScript=d.createElement('script');
+            var existingScript=d.getElementsByTagName('script')[0];
+            loaderScript.async=true;
+            loaderScript.type='text/javascript';
+            loaderScript.src=script;
+            existingScript.parentNode.insertBefore(loaderScript,existingScript);
+        }
+        function assignX(newValue) {
+            x = newValue;
+        }
+        function log(msg) {
+            console.log(msg);
+        }
+    </script>
+</head>
+<body>
+<script>
+    //do async which will take 300ms and update x on return with 'async won'
+    asyncLoad('/js/wait.js?for=300&then='+encodeURIComponent('assignX("async won");'));
+    //do blocking call which will do nothing on return but will hold up execution for 400ms
+    syncLoad('/js/wait.js?for=400');
+    if (x === 'async won') {
+        log('callbacks will always win if they come back during blocking code');
+    } else {
+        log('static code takes priority over callbacks from withing the same script block');
+    }
+</script>
+<script>
+    if (x === 'async won') {
+        log('static code is not executed before callback code in different script blocks');
+    } else {
+        log('static code takes priority over callbacks even in different script blocks');
+    }
+</script>
+
+</body>
+</html>

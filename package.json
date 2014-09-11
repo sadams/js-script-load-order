@@ -3,8 +3,11 @@
   "version": "0.0.1",
   "description": "A simple test for load order in JS",
   "author": "Sam Adams <adams.sam@gmail.com>",
-  "devDependencies" : {
-    "connect"                : "*",
-    "mustache"               : "*"
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.9.0",
+    "mustache": "^0.8.2"
   }
 }

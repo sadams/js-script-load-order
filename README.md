@@ -1,6 +1,12 @@
 js-script-load-order
 ====================
 
-Simple node server for testing document.write [written] external script tags, and in which order they execute.
+simple set of pages for testing the load order of js scripts in various ways.
 
-```npm install``` and then run ```node server.js``` and visit ```http://localhost:59877``` in multiple browsers to understand how document.write(ing) external scripts differs.
+# how
+
+`npm install` 
+
+`npm start`
+
+visit `http://localhost:3000` and view links in multiple browsers to see difference in how script parsing is handled.

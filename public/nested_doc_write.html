@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <script>
+        function scriptLoaded(number){
+            document.write('<p class="script-loaded">' + number + '</p>');
+        }
+        function loadScript(number, nexts) {
+            var cb = Math.floor((Math.random() * 10000000) + 1);
+            nexts = nexts ? '&nexts=' + nexts.join(',') : '';
+            document.write('<scr'+'ipt src="/js/include.js?number=' + number + nexts + '&cb='+cb+'"></sc'+'ript>');
+        }
+    </script>
+    <script>
+        loadScript(1,[2]);
+        loadScript(3,[4]);
+        loadScript(5,[6, 7]);
+        loadScript(8);
+    </script>
+    <script>
+        loadScript(10,[11]);
+    </script>
+    <script>
+        loadScript(12,[13]);
+    </script>
+    <script>
+        loadScript(14,[15, 16]);
+    </script>
+    <script>
+        loadScript(17);
+    </script>
+    <title>Script Load Order Testing</title>
+</head>
+<body>
+Body time!
+</body>
+</html>
